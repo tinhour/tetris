@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>俄罗斯方块</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="info-panel">
+            <div class="info-item">
+                <div class="score">分数: <span id="score">0</span></div>
+            </div>
+            <div class="info-item">
+                <div class="level">等级: <span id="level">1</span></div>
+            </div>
+            <div class="info-item">
+                <div class="next-piece">
+                    <p>下一个:</p>
+                    <canvas id="nextPiece"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="game-area">
+            <canvas id="gameCanvas"></canvas>
+            <div class="direction-controls">
+                <div class="direction-row">
+                    <button id="rotateBtn" class="direction-btn">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+                <div class="direction-row">
+                    <button id="leftBtn" class="direction-btn">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button id="downBtn" class="direction-btn">
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                    <button id="rightBtn" class="direction-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="startBtn">开始游戏</button>
+                <button id="pauseBtn">暂停</button>
+                <button id="musicBtn" class="music-btn">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+        </div>
+        <audio id="bgMusic" loop>
+            <source src="game_background.mp3" type="audio/mp3">
+        </audio>
+    </div>
+    <script src="tetris.js"></script>
+</body>
+</html> 

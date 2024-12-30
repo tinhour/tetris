@@ -1,0 +1,228 @@
+/* 防止页面滚动 */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh; /* 使用视口高度 */
+    overflow: hidden; /* 重新禁用滚动 */
+    position: fixed; /* 恢复固定定位 */
+}
+
+.game-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    gap: 10px;
+    overflow-y: auto; /* 只在容器内允许滚动 */
+}
+
+/* 信息面板样式 */
+.info-panel {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.info-item {
+    text-align: center;
+}
+
+.next-piece {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.next-piece p {
+    margin: 0;
+}
+
+/* 确保游戏区域不会超出视口 */
+.game-area {
+    position: relative;
+    touch-action: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#gameCanvas {
+    border: 2px solid #333;
+    background-color: #f0f0f0;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#nextPiece {
+    border: 1px solid #999;
+    background-color: #f0f0f0;
+    width: 60px;
+    height: 60px;
+}
+
+.controls {
+    position: relative;  /* 改为相对定位 */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.controls button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.controls button:hover {
+    background-color: #45a049;
+}
+
+.paused .controls button#pauseBtn {
+    background-color: #f44336;
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 5px;
+    }
+
+    .info-panel {
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .score, .level {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .next-piece p {
+        font-size: 14px;
+    }
+
+    #nextPiece {
+        width: 50px;
+        height: 50px;
+    }
+
+    .controls button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .game-area {
+        margin-bottom: 10px;
+    }
+
+    .music-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* 针对桌面端的特殊处理 */
+@media (min-width: 769px) {
+    .game-container {
+        padding: 0px;
+        justify-content: flex-start;
+    }
+
+    .info-panel {
+        width: auto;
+        min-width: 300px;
+        margin-bottom: 0px;
+    }
+
+    .game-area {
+        margin-bottom: 0px;
+    }
+
+    #gameCanvas {
+        margin-bottom: 0px;
+    }
+}
+
+/* 方向控制按钮样式 */
+.direction-controls {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.direction-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.direction-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+}
+
+.direction-btn:active {
+    background-color: #45a049;
+    transform: scale(0.95);
+}
+
+/* 在桌面端隐藏方向按钮 */
+@media (min-width: 769px) {
+    .direction-controls {
+        display: none;
+    }
+}
+
+/* 音乐按钮样式 */
+.music-btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.music-btn.muted {
+    background-color: #888;
+}
+
+/* 响应式布局中添加音乐按钮的移动端样式 */
+@media (max-width: 768px) {
+    .music-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+} 
